@@ -7,7 +7,14 @@ let root = document.getElementById('root');
 
 let list_product = [];
 
-date_list.innerHTML = new Date().toLocaleDateString();
+let formatDate = new Date().toLocaleDateString('global', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+date_list.innerHTML = formatDate;
 
 floating_btn.addEventListener('click', () => {
   if (modal.style.display == 'none') {
@@ -37,6 +44,7 @@ addlist_form.addEventListener('submit', (event) => {
   list_product.push({
     name: nameProduct,
     price: priceProduct,
+    date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
   });
 
@@ -65,7 +73,7 @@ function renderToHtml() {
   list_product.forEach((e, i) => {
     root.innerHTML += `
     <div class="card">
-      <p>${e.time}</p>
+      <p>${e.date} &nbsp;  ${e.time}</p>
       <div>${e.name} <span>${e.price}</span></div>
       <button onclick="handleDelete(${i})">Done</button>
     </div>`;
