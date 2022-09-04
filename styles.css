@@ -185,6 +185,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  text-transform: capitalize;
 }
 
 .card span {

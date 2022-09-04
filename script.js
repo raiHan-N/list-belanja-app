@@ -2,9 +2,12 @@ let floating_btn = document.getElementById('floating_btn');
 let modal = document.getElementById('modal');
 let modal_bg = document.getElementById('modal_bg');
 let addlist_form = document.getElementById('addlist_form');
+let date_list = document.getElementById('date_list');
 let root = document.getElementById('root');
 
 let list_product = [];
+
+date_list.innerHTML = new Date().toLocaleDateString();
 
 floating_btn.addEventListener('click', () => {
   if (modal.style.display == 'none') {
@@ -27,6 +30,7 @@ addlist_form.addEventListener('submit', (event) => {
 
   if (priceProduct === '' || nameProduct === '') {
     alert('Isi Dulu Boy...');
+    hideModal();
     return;
   }
 
@@ -62,7 +66,7 @@ function renderToHtml() {
     root.innerHTML += `
     <div class="card">
       <p>${e.time}</p>
-      <div>${e.name} <span>Rp.${e.price},00</span></div>
+      <div>${e.name} <span>${e.price}</span></div>
       <button onclick="handleDelete(${i})">Done</button>
     </div>`;
   });
