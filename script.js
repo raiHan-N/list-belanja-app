@@ -74,13 +74,17 @@ function renderToHtml() {
     root.innerHTML += `
     <div class="card">
       <p>${e.date} &nbsp;  ${e.time}</p>
-      <div>${e.name} <span>${e.price}</span></div>
+      <div>${e.name} <span>Rp.${e.price}</span></div>
       <button onclick="handleDelete(${i})">Done</button>
     </div>`;
   });
 }
 
 function handleDelete(index) {
+  let confDelete = confirm('Delete this product?');
+  if (!confDelete) {
+    return;
+  }
   list_product.splice(index, 1);
   renderToHtml();
 }
